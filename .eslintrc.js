@@ -9,5 +9,13 @@ module.exports = {
         '@typescript-eslint/consistent-type-imports': ['error', { prefer: 'no-type-imports' }],
       },
     },
+    {
+      files: ['src/**/*.{ts,vue}'],
+      rules: {
+        'vue/one-component-per-file': ['off'],
+        'eslint-comments/no-unlimited-disable': ['off'],
+      },
+    },
   ],
+
 }

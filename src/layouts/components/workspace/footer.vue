@@ -1,5 +1,5 @@
 <template>
-  paga123123123123e1
+  <div>footer</div>
 </template>
 
 <script setup lang="ts"></script>

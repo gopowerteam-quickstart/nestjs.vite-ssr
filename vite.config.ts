@@ -1,19 +1,22 @@
-import { URL, fileURLToPath } from 'node:url'
-
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import jsx from '@vitejs/plugin-vue-jsx'
+import svg from 'vite-svg-loader'
 import ssr from 'vite-ssr/plugin'
+import { defineVitePlugins } from './.vite/plugins'
+import { defineViteResolve } from './.vite/resolve'
+import { defineViteCSS } from './.vite/css'
 
-// https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [ssr(), vue(), jsx()],
-  resolve: {
-    alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url)),
-    },
-  },
-  ssr: {
-    external: ['reflect-metadata'],
-  },
+  ...defineViteResolve(),
+  ...defineViteCSS(),
+  ...defineVitePlugins([
+    ssr(),
+    vue({
+      include: [/\.vue$/],
+      reactivityTransform: true,
+    }),
+    jsx(),
+    svg(),
+  ]),
 })
