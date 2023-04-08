@@ -17,7 +17,10 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "commit": "git-cz",
+    "precommit": "chmod +x .husky/*",
+    "lint:eslint": "eslint \"src/**/*.{vue,ts,tsx}\" --fix"
   },
   "dependencies": {
     "@nestjs/common": "^9.0.0",
@@ -33,7 +36,7 @@
     "vue-router": "^4.1.6"
   },
   "devDependencies": {
-    "@gopowerteam/eslint-config": "^0.0.7",
+    "@gopowerteam/eslint-config": "latest",
     "@nestjs/cli": "^9.0.0",
     "@nestjs/schematics": "^9.0.0",
     "@nestjs/testing": "^9.0.0",
@@ -53,23 +56,36 @@
     "ts-node": "^10.0.0",
     "tsconfig-paths": "4.2.0",
     "typescript": "^4.7.4",
-    "vite": "^4.2.1"
+    "vite": "^4.2.1",
+    "@commitlint/cli": "17.4.2",
+    "@commitlint/config-conventional": "17.4.2",
+    "commitizen": "4.3.0",
+    "cz-customizable": "7.0.0",
+    "lint-staged": "13.1.0",
+    "husky": "8.0.2",
+    "stylelint": "14.16.1",
+    "stylelint-config-html": "1.1.0",
+    "stylelint-config-prettier": "9.0.4",
+    "stylelint-config-recess-order": "3.1.0",
+    "stylelint-config-recommended": "9.0.0",
+    "stylelint-config-recommended-less": "1.0.4",
+    "stylelint-config-recommended-scss": "8.0.0",
+    "stylelint-config-recommended-vue": "1.4.0",
+    "stylelint-config-standard": "29.0.0",
+    "stylelint-config-standard-scss": "6.1.0",
+    "stylelint-less": "1.0.6",
+    "stylelint-order": "6.0.1",
+    "stylelint-prettier": "2.0.0"
   },
   "jest": {
-    "moduleFileExtensions": [
-      "js",
-      "json",
-      "ts"
-    ],
+    "moduleFileExtensions": ["js", "json", "ts"],
     "rootDir": "src",
     "testRegex": ".*\\.spec\\.ts$",
-    "transform": {
-      "^.+\\.(t|j)s$": "ts-jest"
-    },
-    "collectCoverageFrom": [
-      "**/*.(t|j)s"
-    ],
+    "transform": { "^.+\\.(t|j)s$": "ts-jest" },
+    "collectCoverageFrom": ["**/*.(t|j)s"],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
-  }
+  },
+  "commitlint": { "extends": ["@commitlint/config-conventional"] },
+  "config": { "commitizen": { "path": "node_modules/cz-customizable" } }
 }
